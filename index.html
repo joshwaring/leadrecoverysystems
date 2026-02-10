@@ -1,260 +1,205 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lead Recovery Systems — Missed Call Recovery</title>
-  <meta name="description" content="One-time installation that automatically texts missed callers so you stop losing booked jobs." />
+  <meta charset="UTF-8" />
+  <title>Lead Recovery Systems | Missed Call Recovery for Service Businesses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Lead Recovery Systems helps service businesses recover lost revenue from missed calls with automatic text follow-up."
+  />
   <style>
-    :root{
-      --bg:#0b0d12; --card:#111522; --muted:#9aa3b2; --text:#eef2ff;
-      --line:#1c2340; --accent:#7c3aed; --accent2:#22c55e;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 1040px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #111827;
+      background-color: #f9fafb;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family:var(--font); background:
-      radial-gradient(1200px 600px at 20% -10%, rgba(124,58,237,.35), transparent 60%),
-      radial-gradient(900px 500px at 90% 0%, rgba(34,197,94,.18), transparent 55%),
-      var(--bg);
-      color:var(--text);
+    header {
+      background: #111827;
+      color: #f9fafb;
+      padding: 1.25rem 1.5rem;
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 64px}
-    .nav{
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
-      padding:10px 0 22px;
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(124,58,237,1), rgba(34,197,94,1));
-      box-shadow: 0 10px 30px rgba(124,58,237,.25);
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 3rem;
+      background: #ffffff;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
     }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      border:1px solid var(--line); background:rgba(255,255,255,.03);
-      padding:8px 12px; border-radius:999px; color:var(--muted); font-size:14px;
+    h2 {
+      margin-top: 0;
     }
-    .hero{
-      display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; align-items:stretch;
-      margin-top:14px;
+    .hero {
+      padding: 1.5rem 0 1rem;
+      border-bottom: 1px solid #e5e7eb;
     }
-    @media (max-width: 900px){ .hero{grid-template-columns:1fr} }
-    .card{
-      border:1px solid var(--line); background:rgba(17,21,34,.72);
-      border-radius:var(--radius); box-shadow:var(--shadow);
-      padding:26px;
-      backdrop-filter: blur(10px);
+    .hero-tagline {
+      color: #6b7280;
+      margin-top: 0.25rem;
     }
-    h1{
-      margin:12px 0 12px; font-size:44px; line-height:1.05; letter-spacing:-.8px;
+    .callout {
+      margin: 1.5rem 0;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e3a8a;
     }
-    @media (max-width: 520px){ h1{font-size:36px} }
-    .sub{color:var(--muted); font-size:18px; line-height:1.5; margin:0 0 18px}
-    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 16px; border-radius:12px; border:1px solid var(--line);
-      background:rgba(255,255,255,.04); color:var(--text); font-weight:650;
+    .contact-block {
+      margin: 1.5rem 0;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
     }
-    .btnPrimary{
-      background: linear-gradient(135deg, rgba(124,58,237,1), rgba(99,102,241,1));
-      border-color: rgba(124,58,237,.5);
+    .contact-block strong {
+      display: block;
+      margin-bottom: 0.25rem;
     }
-    .btnPrimary:hover{filter:brightness(1.05)}
-    .btn:hover{transform: translateY(-1px)}
-    .note{color:var(--muted); font-size:13px; margin-top:10px}
-    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:16px}
-    @media (max-width: 900px){ .grid3{grid-template-columns:1fr} }
-    .mini{
-      border:1px solid var(--line); border-radius:14px; padding:14px;
-      background:rgba(255,255,255,.03)
+    form {
+      margin-top: 1rem;
     }
-    .mini h3{margin:0 0 6px; font-size:16px}
-    .mini p{margin:0; color:var(--muted); font-size:14px; line-height:1.45}
-    .right h2{margin:0 0 10px; font-size:18px}
-    .steps{display:grid; gap:10px; margin-top:10px}
-    .step{
-      display:flex; gap:12px; align-items:flex-start;
-      border:1px solid var(--line); border-radius:14px; padding:12px;
-      background:rgba(255,255,255,.03)
+    label {
+      display: block;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
     }
-    .num{
-      min-width:28px; height:28px; border-radius:9px;
-      display:flex; align-items:center; justify-content:center;
-      background:rgba(124,58,237,.18); border:1px solid rgba(124,58,237,.4);
-      color:#ddd; font-weight:700; font-size:13px;
+    input, textarea {
+      width: 100%;
+      max-width: 100%;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      border: 1px solid #d1d5db;
+      font: inherit;
+      box-sizing: border-box;
     }
-    .step b{display:block; margin-bottom:3px}
-    .step span{color:var(--muted); font-size:14px; line-height:1.4}
-    .section{margin-top:18px}
-    .faq{margin-top:14px; display:grid; gap:10px}
-    details{
-      border:1px solid var(--line); border-radius:14px; padding:12px 14px;
-      background:rgba(255,255,255,.03)
+    textarea {
+      min-height: 90px;
+      resize: vertical;
     }
-    summary{cursor:pointer; font-weight:650}
-    details p{margin:10px 0 0; color:var(--muted); line-height:1.5}
-    .footer{
-      margin-top:26px; color:var(--muted); font-size:13px; display:flex; flex-wrap:wrap;
-      gap:10px; align-items:center; justify-content:space-between;
-      border-top:1px solid var(--line); padding-top:18px;
+    .consent {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-top: 0.75rem;
     }
-    .kpi{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px
+    footer {
+      background: #111827;
+      color: #d1d5db;
+      padding: 1.5rem;
+      font-size: 0.85rem;
     }
-    .kpi .pill{font-size:13px}
-    .small{font-size:12px;color:var(--muted)}
+    footer a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .footer-links {
+      margin-top: 0.5rem;
+    }
+    .footer-links a {
+      margin-right: 1rem;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>Lead Recovery Systems</div>
-      </div>
-      <div class="pill">Missed-call recovery for service businesses</div>
-    </div>
+  <header>
+    <h1>Lead Recovery Systems</h1>
+  </header>
 
-    <div class="hero">
-      <div class="card">
-        <div class="pill">Stop losing jobs to missed calls</div>
-        <h1>Missed Call Recovery Install</h1>
-        <p class="sub">
-          A one-time installation that automatically texts missed callers with a clear next step
-          (book a callback or reply for help) so your best leads don’t disappear.
-        </p>
+  <main>
+    <section class="hero">
+      <h2>Turn Missed Calls into Booked Jobs</h2>
+      <p class="hero-tagline">
+        Automated missed-call text follow-up for home service businesses.
+      </p>
+    </section>
 
-        <div class="kpi">
-          <div class="pill">✅ One-time setup</div>
-          <div class="pill">✅ Works after-hours</div>
-          <div class="pill">✅ No complicated CRM</div>
-        </div>
+    <section>
+      <h3>What We Do</h3>
+      <p>
+        Lead Recovery Systems sets up a simple automation for your business:
+        when a customer calls your number and you miss the call, they receive an
+        automatic text message so you can keep the conversation alive and win
+        more jobs.
+      </p>
+      <p>
+        Each client gets their own Twilio and Zapier accounts, connected to a
+        dedicated phone number. Your existing business number simply forwards
+        missed calls into the system—nothing changes for your customers when
+        they dial you.
+      </p>
+    </section>
 
-        <div class="ctaRow">
-          <!-- Replace these links with your real ones -->
-          <a class="btn btnPrimary" href="mailto:josh@leadrecoverysystems.com?subject=Missed%20Call%20Recovery%20Install%20-%20Quick%20Walkthrough&body=Business%20name%3A%0AService%20type%3A%0ACity%2FState%3A%0ABest%20number%20to%20reach%20you%3A%0A">Request a 10-min walkthrough</a>
-          <a class="btn" href="#how">See how it works</a>
-        </div>
+    <section class="callout">
+      <strong>See it in action</strong>
+      <p>
+        To see a live demo, call or text our demo line and watch how the
+        automatic follow-up works.
+      </p>
+      <p><strong>Demo &amp; support line: +1 855 455 2242</strong></p>
+    </section>
 
-        <div class="note">
-          Prefer text? Email is fastest for now. (We’ll add a booking link later if you want.)
-        </div>
+    <section class="contact-block">
+      <strong>Request a demo or ask a question</strong>
+      <p>
+        Use the form below or call/text our demo line. We’ll show you exactly
+        how missed-call recovery works for your business.
+      </p>
 
-        <div class="grid3">
-          <div class="mini">
-            <h3>Immediate follow-up</h3>
-            <p>Caller misses you → they instantly get a helpful text instead of going to your competitor.</p>
-          </div>
-          <div class="mini">
-            <h3>Simple next step</h3>
-            <p>One clear action: book a callback or reply HELP for assistance.</p>
-          </div>
-          <div class="mini">
-            <h3>Low maintenance</h3>
-            <p>No complex integrations. Once installed, it runs quietly in the background.</p>
-          </div>
-        </div>
-      </div>
+      <!-- This form is informational; you can wire it later if you want -->
+      <form>
+        <label>
+          Name
+          <input type="text" name="name" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" />
+        </label>
+        <label>
+          Phone
+          <input type="tel" name="phone" />
+        </label>
+        <label>
+          Message
+          <textarea name="message"></textarea>
+        </label>
+      </form>
 
-      <div class="card right" id="how">
-        <h2>How it works</h2>
-        <div class="steps">
-          <div class="step">
-            <div class="num">1</div>
-            <div>
-              <b>Customer calls</b>
-              <span>High-intent lead reaches out.</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="num">2</div>
-            <div>
-              <b>Call is missed</b>
-              <span>If no one answers, the recovery kicks in automatically.</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="num">3</div>
-            <div>
-              <b>Instant text goes out</b>
-              <span>“Sorry we missed you — book a callback or reply HELP.”</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="num">4</div>
-            <div>
-              <b>You follow up later</b>
-              <span>You see the booking/reply and close the job on your schedule.</span>
-            </div>
-          </div>
-        </div>
+      <p class="consent">
+        By calling, texting, or submitting this form, you agree to receive SMS
+        messages from Lead Recovery Systems related to your inquiry (demo
+        details, support, and scheduling). Message &amp; data rates may apply.
+        Reply STOP to unsubscribe, HELP for help.
+      </p>
+    </section>
+  </main>
 
-        <div class="section">
-          <h2>What you get</h2>
-          <div class="steps">
-            <div class="step">
-              <div class="num">✓</div>
-              <div>
-                <b>Installation + testing</b>
-                <span>Configured, tested, and confirmed working end-to-end.</span>
-              </div>
-            </div>
-            <div class="step">
-              <div class="num">✓</div>
-              <div>
-                <b>Copywriting included</b>
-                <span>We tailor the message to your service + hours.</span>
-              </div>
-            </div>
-            <div class="step">
-              <div class="num">✓</div>
-              <div>
-                <b>30 days of tweaks</b>
-                <span>Small adjustments after you see it live.</span>
-              </div>
-            </div>
-          </div>
-          <p class="small" style="margin-top:10px;">
-            Note: Your phone system subscription (if any) is paid directly by you. We do not charge a monthly fee.
-          </p>
-        </div>
-
-        <div class="section">
-          <h2>FAQ</h2>
-          <div class="faq">
-            <details>
-              <summary>Does this replace my staff?</summary>
-              <p>No — it only handles missed calls. If you answer, nothing changes.</p>
-            </details>
-            <details>
-              <summary>Will it spam my customers?</summary>
-              <p>No. It only texts people who call your business number.</p>
-            </details>
-            <details>
-              <summary>What happens when someone replies “HELP”?</summary>
-              <p>It starts a normal text conversation in your inbox. You or your staff reply like usual.</p>
-            </details>
-          </div>
-        </div>
+  <footer>
+    <div class="footer-inner">
+      <p><strong>Lead Recovery Systems</strong></p>
+      <p>3782 Glebe Meadow Way, Edgewater, MD 21037, US</p>
+      <p>Contact: <a href="mailto:josh@leadrecoverysystems.com">josh@leadrecoverysystems.com</a></p>
+      <div class="footer-links">
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms-and-conditions.html">Terms &amp; Conditions</a>
       </div>
     </div>
-
-    <div class="footer">
-      <div>© <span id="y"></span> Lead Recovery Systems</div>
-      <div>
-        <a class="pill" href="mailto:josh@leadrecoverysystems.com">josh@leadrecoverysystems.com</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  </footer>
 </body>
 </html>
+
