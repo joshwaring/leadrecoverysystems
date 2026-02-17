@@ -10,29 +10,34 @@
   />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <header>
-    <p class="site-title"><a href="index.html">Lead Recovery Systems</a></p>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">Lead Recovery Systems</a>
+    </div>
   </header>
 
-  <main>
+  <main class="page">
     <div class="shell">
 
       <section class="hero">
-        <h2>Turn Missed Calls into Booked Jobs</h2>
-        <p class="hero-tagline">
+        <h1>Turn Missed Calls into Booked Jobs</h1>
+        <p class="sub">
           Automated missed-call text follow-up for home service businesses.
         </p>
       </section>
 
-      <section class="section">
-        <h3>What We Do</h3>
+      <section class="card">
+        <h2>What We Do</h2>
+
         <p>
           Lead Recovery Systems sets up a simple automation for your business:
           when a customer calls your number and you miss the call, they receive an
           automatic text message so you can keep the conversation alive and win
           more jobs.
         </p>
+
         <p>
           Each client gets their own Twilio and Zapier accounts, connected to a
           dedicated phone number. Your existing business number simply forwards
@@ -40,7 +45,7 @@
           they dial you.
         </p>
 
-        <div class="trust-block">
+        <div class="trust">
           <h3>Who this is for</h3>
           <p>Home service businesses (HVAC, plumbing, electrical, roofing, cleaning, and more).</p>
 
@@ -64,62 +69,67 @@
         </div>
       </section>
 
-      <section class="section callout">
-        <strong>See it in action</strong>
+      <section class="card callout">
+        <h2>See it in action</h2>
         <p>
           To see a live demo, call or text our demo line and watch how the
           automatic follow-up works.
         </p>
-        <p class="big"><strong>Demo &amp; support line: +1 855 455 2242</strong></p>
+        <p class="big"><strong>Demo &amp; support line: +1 (855) 455-2242</strong></p>
       </section>
 
-      <section class="section contact-block">
-        <strong>Request a demo or ask a question</strong>
+      <section class="card">
+        <h2>Request a demo or ask a question</h2>
         <p class="muted">
           Use the form below or call/text our demo line. We’ll show you exactly
           how missed-call recovery works for your business.
         </p>
 
-        <!-- This form is informational; you can wire it later if you want -->
-        <form>
+        <!-- Mailto form (simple, not dead) -->
+        <form class="form" action="mailto:josh@leadrecoverysystems.com" method="POST" enctype="text/plain">
           <label>
             <span>Name</span>
-            <input type="text" name="name" />
+            <input type="text" name="Name" required />
           </label>
+
           <label>
             <span>Email</span>
-            <input type="email" name="email" />
+            <input type="email" name="Email" required />
           </label>
+
           <label>
             <span>Phone</span>
-            <input type="tel" name="phone" />
+            <input type="tel" name="Phone" />
           </label>
-          <label style="grid-column: 1 / -1;">
+
+          <label class="full">
             <span>Message</span>
-            <textarea name="message"></textarea>
+            <textarea name="Message" required></textarea>
           </label>
+
+          <button class="btn full" type="submit">Send</button>
         </form>
 
         <p class="consent">
           By calling, texting, or submitting this form, you agree to receive SMS
           messages from Lead Recovery Systems related to your inquiry (demo
           details, support, and scheduling). Message &amp; data rates may apply.
-          Reply STOP to unsubscribe, HELP for help.
+          Reply STOP to unsubscribe, HELP for help. Consent is not a condition of purchase.
         </p>
       </section>
 
     </div>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="footer-inner">
-      <p><strong>Lead Recovery Systems</strong></p>
+      <p class="footer-title"><strong>Lead Recovery Systems</strong></p>
       <p>Lead Recovery Systems (DBA) — Joshua Waring (Sole Proprietor)</p>
       <p>3782 Glebe Meadow Way, Edgewater, MD 21037, US</p>
       <p>SMS Support: <a href="tel:+18554552242">+1 (855) 455-2242</a></p>
       <p>Contact: <a href="mailto:josh@leadrecoverysystems.com">josh@leadrecoverysystems.com</a></p>
+
       <div class="footer-links">
-        <!-- (No leading slash keeps this working on GitHub Pages + custom domain) -->
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
       </div>
