@@ -1,0 +1,116 @@
+/* styles.css */
+:root{
+  --bg: #0b1220;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --border: #e7e7e7;
+  --link: #2b6fff;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color: var(--text);
+  background: #f6f7fb;
+  line-height: 1.6;
+}
+
+/* Top header bar */
+header{
+  background: var(--bg);
+  color: #fff;
+  padding: 18px 22px;
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+/* Page layout */
+main{
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 44px 18px;
+}
+
+/* Card wrapper (your centered white box) */
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 34px;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.10);
+}
+
+h1,h2,h3{
+  margin: 0 0 12px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+p{ margin: 0 0 14px; color: var(--text); }
+.small, .muted{ color: var(--muted); font-size: 0.95rem; }
+
+/* Sections */
+section{ margin: 22px 0; }
+
+/* Trust / details block */
+.trust-block{
+  margin-top: 16px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fafafa;
+}
+.trust-block h3{ margin-top: 14px; }
+.trust-block h3:first-child{ margin-top: 0; }
+.trust-block ol, .trust-block ul{ padding-left: 18px; margin: 10px 0 0; }
+
+/* Callout box */
+.callout{
+  margin: 22px 0;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid #dbeafe;
+  background: #eff6ff;
+}
+
+/* Forms (basic) */
+form{ margin-top: 10px; }
+label{ display:block; margin: 10px 0 6px; font-weight: 600; }
+input, textarea{
+  width: 100%;
+  padding: 12px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font: inherit;
+  background: #fff;
+}
+textarea{ min-height: 120px; resize: vertical; }
+
+/* Links */
+a{ color: var(--link); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+/* Footer */
+footer{
+  background: var(--bg);
+  color: #dbe3ff;
+  padding: 26px 18px;
+}
+.footer-inner{
+  max-width: 920px;
+  margin: 0 auto;
+}
+.footer-inner p{ margin: 0 0 10px; color: #dbe3ff; }
+.footer-links a{
+  margin-right: 18px;
+  color: #9ec5ff;
+}
+.footer-links a:hover{ color: #ffffff; }
+
+/* Make pages look good on phones */
+@media (max-width: 600px){
+  .card{ padding: 22px; }
+  header{ padding: 16px 16px; }
+  main{ padding: 26px 14px; }
+}
