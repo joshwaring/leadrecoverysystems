@@ -216,7 +216,6 @@
       footer a:hover{ text-decoration: underline; }
       .footer-links{ margin-top: 8px; display:flex; gap: 18px; flex-wrap: wrap; }
 
-      /* Make “send” actually do something without backend (mailto) */
       form { margin:0; }
     </style>
   </head>
@@ -292,28 +291,33 @@
             Use the form below or call/text our demo line. We’ll show you exactly how missed-call recovery works for your business.
           </p>
 
-          <!-- NOTE: This uses mailto so it "sends" without any backend. -->
           <div class="formbox">
-            <form action="mailto:josh@leadrecoverysystems.com" method="post" enctype="text/plain">
+            <form action="https://formspree.io/f/mykdjvwz" method="POST">
+              <!-- Honeypot (spam trap). Humans won't fill this in. -->
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+              <!-- Optional subject line in your inbox -->
+              <input type="hidden" name="_subject" value="New Lead Recovery Systems website inquiry" />
+
               <div class="grid" style="margin-top: 10px;">
                 <div>
                   <label for="name">Name</label>
-                  <input id="name" name="Name" type="text" autocomplete="name" />
+                  <input id="name" name="name" type="text" autocomplete="name" required />
                 </div>
 
                 <div>
                   <label for="email">Email</label>
-                  <input id="email" name="Email" type="email" autocomplete="email" />
+                  <input id="email" name="email" type="email" autocomplete="email" required />
                 </div>
 
                 <div>
                   <label for="phone">Phone</label>
-                  <input id="phone" name="Phone" type="tel" autocomplete="tel" />
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" />
                 </div>
 
                 <div class="full">
                   <label for="message">Message</label>
-                  <textarea id="message" name="Message"></textarea>
+                  <textarea id="message" name="message" required></textarea>
                 </div>
               </div>
 
@@ -345,3 +349,4 @@
     </footer>
   </body>
 </html>
+
