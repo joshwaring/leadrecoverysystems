@@ -1,147 +1,347 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Lead Recovery Systems | Missed Call Recovery for Service Businesses</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Lead Recovery Systems helps service businesses recover lost revenue from missed calls with automatic text follow-up."
-  />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lead Recovery Systems | Missed Call Recovery for Service Businesses</title>
+    <meta
+      name="description"
+      content="Lead Recovery Systems helps service businesses recover lost revenue from missed calls with automatic text follow-up."
+    />
 
-  <!-- THIS is what makes your site not look plain -->
-  <link rel="stylesheet" href="style.css" />
-</head>
+    <style>
+      :root{
+        --bg1:#0b1220;
+        --bg2:#0a2a4a;
+        --card:#ffffff;
+        --text:#0f172a;
+        --muted:#475569;
+        --border:#e2e8f0;
+        --soft:#f1f5f9;
+        --accent:#2563eb;
+        --accent2:#93c5fd;
+        --shadow: 0 20px 60px rgba(2, 6, 23, 0.18);
+        --shadow2: 0 10px 25px rgba(2, 6, 23, 0.10);
+        --radius: 18px;
+      }
 
-<body>
-  <header class="site-header">
-    <div class="container">
-      <div class="brand">Lead Recovery Systems</div>
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body{
+        margin:0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+        color: var(--text);
+        line-height: 1.6;
+        background:
+          radial-gradient(1200px 500px at 50% -50px, rgba(147,197,253,0.35), transparent 60%),
+          radial-gradient(900px 400px at 10% 10%, rgba(37,99,235,0.18), transparent 60%),
+          linear-gradient(180deg, #eef2ff 0%, #f8fafc 40%, #ffffff 100%);
+      }
+
+      /* Top bar */
+      .topbar{
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: linear-gradient(90deg, var(--bg1), var(--bg2));
+        color: #fff;
+        padding: 18px 16px;
+        box-shadow: 0 10px 25px rgba(2,6,23,0.25);
+      }
+      .topbar .inner{
+        max-width: 1080px;
+        margin: 0 auto;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+      }
+
+      /* Layout */
+      .wrap{
+        max-width: 1080px;
+        margin: 40px auto 70px;
+        padding: 0 18px;
+      }
+
+      .card{
+        background: var(--card);
+        border: 1px solid rgba(226,232,240,0.9);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .section{
+        padding: 34px 40px;
+      }
+      @media (max-width: 720px){
+        .section{ padding: 26px 18px; }
+      }
+
+      .hero{
+        padding: 44px 40px 34px;
+        background:
+          radial-gradient(900px 260px at 20% 0%, rgba(37,99,235,0.12), transparent 60%),
+          radial-gradient(700px 240px at 80% 0%, rgba(147,197,253,0.22), transparent 55%),
+          linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+        border-bottom: 1px solid var(--border);
+      }
+
+      h1,h2,h3{ margin: 0 0 10px; line-height: 1.2; }
+      h2{ font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -0.02em; }
+      h3{ font-size: 20px; margin-top: 22px; }
+
+      p{ margin: 10px 0 0; color: var(--text); }
+      .muted{ color: var(--muted); }
+
+      .hero-tagline{
+        margin-top: 10px;
+        font-size: 16px;
+        color: var(--muted);
+      }
+
+      /* Trust / how-it-works block */
+      .trust{
+        margin-top: 18px;
+        padding: 22px 22px 18px;
+        background: linear-gradient(180deg, #fbfdff, #f8fafc);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        box-shadow: var(--shadow2);
+      }
+      .trust h3{ margin-top: 16px; }
+      .trust h3:first-child{ margin-top: 0; }
+
+      ol, ul{
+        margin: 10px 0 0 18px;
+        color: var(--text);
+      }
+      li{ margin: 6px 0; }
+
+      /* Callout */
+      .callout{
+        display:block;
+        padding: 22px 22px;
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(37,99,235,0.08), rgba(147,197,253,0.10));
+        border: 1px solid rgba(37,99,235,0.20);
+      }
+      .callout strong{ display:block; font-size: 18px; }
+      .callout .bigline{ margin-top: 10px; font-weight: 800; }
+
+      /* Form */
+      .formbox{
+        margin-top: 18px;
+        padding: 22px;
+        border-radius: 14px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow2);
+      }
+      .grid{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      @media (max-width: 720px){
+        .grid{ grid-template-columns: 1fr; }
+      }
+      label{
+        display:block;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+      input, textarea{
+        width: 100%;
+        padding: 12px 12px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        outline: none;
+        font: inherit;
+        background: #fff;
+      }
+      input:focus, textarea:focus{
+        border-color: rgba(37,99,235,0.45);
+        box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
+      }
+      textarea{
+        min-height: 130px;
+        resize: vertical;
+      }
+      .full{ grid-column: 1 / -1; }
+
+      .btn{
+        margin-top: 14px;
+        width: 100%;
+        border: none;
+        border-radius: 14px;
+        padding: 14px 16px;
+        background: linear-gradient(90deg, #1d4ed8, #2563eb);
+        color: #fff;
+        font-weight: 800;
+        cursor: pointer;
+        letter-spacing: 0.2px;
+      }
+      .btn:hover{ filter: brightness(1.02); }
+      .btn:active{ transform: translateY(1px); }
+
+      .consent{
+        margin-top: 12px;
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+
+      /* Footer */
+      footer{
+        margin-top: 40px;
+        background: linear-gradient(90deg, var(--bg1), var(--bg2));
+        color: rgba(255,255,255,0.85);
+        padding: 34px 18px;
+      }
+      footer .inner{
+        max-width: 1080px;
+        margin: 0 auto;
+        display:grid;
+        gap: 8px;
+      }
+      footer a{
+        color: var(--accent2);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      footer a:hover{ text-decoration: underline; }
+      .footer-links{ margin-top: 8px; display:flex; gap: 18px; flex-wrap: wrap; }
+
+      /* Make “send” actually do something without backend (mailto) */
+      form { margin:0; }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="inner">Lead Recovery Systems</div>
     </div>
-  </header>
 
-  <main class="container">
-    <div class="card">
-      <section class="hero">
-        <h1>Turn Missed Calls into Booked Jobs</h1>
-        <p class="subhead">
-          Automated missed-call text follow-up for home service businesses.
-        </p>
-      </section>
-
-      <section class="section">
-        <h2>What We Do</h2>
-        <p>
-          Lead Recovery Systems sets up a simple automation for your business:
-          when a customer calls your number and you miss the call, they receive an
-          automatic text message so you can keep the conversation alive and win
-          more jobs.
-        </p>
-        <p>
-          Each client gets their own Twilio and Zapier accounts, connected to a
-          dedicated phone number. Your existing business number simply forwards
-          missed calls into the system—nothing changes for your customers when
-          they dial you.
-        </p>
-
-        <div class="panel">
-          <h3>Who this is for</h3>
-          <p>Home service businesses (HVAC, plumbing, electrical, roofing, cleaning, and more).</p>
-
-          <h3>How it works</h3>
-          <ol>
-            <li>A customer calls your business number</li>
-            <li>If you miss the call, they instantly get a text with clear options</li>
-            <li>Replies are routed to you/your team so you can book the job</li>
-          </ol>
-
-          <h3>What your customers experience</h3>
-          <p>Customers still call your normal business number—nothing changes on their end.</p>
-
-          <h3>What’s included</h3>
-          <ul>
-            <li>Missed-call text flow (during business hours)</li>
-            <li>After-hours flow</li>
-            <li>Routing rules to the right person</li>
-            <li>Basic reporting + support for tweaks</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="callout">
-        <div>
-          <h2>See it in action</h2>
-          <p>
-            To see a live demo, call or text our demo line and watch how the
-            automatic follow-up works.
-          </p>
-          <p class="bold">Demo &amp; support line: <a href="tel:+18554552242">+1 (855) 455-2242</a></p>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>Request a demo or ask a question</h2>
-        <p class="muted">
-          Use the form below or call/text our demo line. We’ll show you exactly
-          how missed-call recovery works for your business.
-        </p>
-
-        <!-- IMPORTANT:
-             GitHub Pages can't "send" forms by itself.
-             This is set up to use Formspree (free) — replace YOUR_FORM_ID.
-             If you don't want Formspree yet, leave action="" and it won't submit anywhere.
-        -->
-        <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <div class="grid">
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" autocomplete="name" required />
-            </label>
-
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" autocomplete="email" required />
-            </label>
-
-            <label>
-              <span>Phone</span>
-              <input type="tel" name="phone" autocomplete="tel" />
-            </label>
-
-            <label class="full">
-              <span>Message</span>
-              <textarea name="message" required></textarea>
-            </label>
+    <div class="wrap">
+      <div class="card">
+        <div class="hero">
+          <h2>Turn Missed Calls into Booked Jobs</h2>
+          <div class="hero-tagline">
+            Automated missed-call text follow-up for home service businesses.
           </div>
+        </div>
 
-          <button class="button" type="submit">Send</button>
-
-          <p class="consent">
-            By calling, texting, or submitting this form, you agree to receive SMS
-            messages from Lead Recovery Systems related to your inquiry (demo
-            details, support, and scheduling). Message &amp; data rates may apply.
-            Reply STOP to unsubscribe, HELP for help. Consent is not a condition of purchase.
+        <div class="section">
+          <h3>What We Do</h3>
+          <p>
+            Lead Recovery Systems sets up a simple automation for your business:
+            when a customer calls your number and you miss the call, they receive an
+            automatic text message so you can keep the conversation alive and win more jobs.
           </p>
-        </form>
-      </section>
+          <p>
+            Each client gets their own Twilio and Zapier accounts, connected to a
+            dedicated phone number. Your existing business number simply forwards
+            missed calls into the system—nothing changes for your customers when they dial you.
+          </p>
+
+          <div class="trust">
+            <h3>Who this is for</h3>
+            <p class="muted">
+              Home service businesses (HVAC, plumbing, electrical, roofing, cleaning, and more).
+            </p>
+
+            <h3>How it works</h3>
+            <ol>
+              <li>A customer calls your business number</li>
+              <li>If you miss the call, they instantly get a text with clear options</li>
+              <li>Replies are routed to you/your team so you can book the job</li>
+            </ol>
+
+            <h3>What your customers experience</h3>
+            <p class="muted">
+              Customers still call your normal business number—nothing changes on their end.
+            </p>
+
+            <h3>What’s included</h3>
+            <ul>
+              <li>Missed-call text flow (during business hours)</li>
+              <li>After-hours flow</li>
+              <li>Routing rules to the right person</li>
+              <li>Basic reporting + support for tweaks</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section" style="border-top:1px solid var(--border);">
+          <div class="callout">
+            <strong>See it in action</strong>
+            <p class="muted">
+              To see a live demo, call or text our demo line and watch how the automatic follow-up works.
+            </p>
+            <div class="bigline">Demo &amp; support line: +1 (855) 455-2242</div>
+          </div>
+        </div>
+
+        <div class="section" style="border-top:1px solid var(--border);">
+          <h3>Request a demo or ask a question</h3>
+          <p class="muted">
+            Use the form below or call/text our demo line. We’ll show you exactly how missed-call recovery works for your business.
+          </p>
+
+          <!-- NOTE: This uses mailto so it "sends" without any backend. -->
+          <div class="formbox">
+            <form action="mailto:josh@leadrecoverysystems.com" method="post" enctype="text/plain">
+              <div class="grid" style="margin-top: 10px;">
+                <div>
+                  <label for="name">Name</label>
+                  <input id="name" name="Name" type="text" autocomplete="name" />
+                </div>
+
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="Email" type="email" autocomplete="email" />
+                </div>
+
+                <div>
+                  <label for="phone">Phone</label>
+                  <input id="phone" name="Phone" type="tel" autocomplete="tel" />
+                </div>
+
+                <div class="full">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="Message"></textarea>
+                </div>
+              </div>
+
+              <button class="btn" type="submit">Send</button>
+
+              <div class="consent">
+                By calling, texting, or submitting this form, you agree to receive SMS messages from Lead Recovery Systems related to your inquiry
+                (demo details, support, and scheduling). Message &amp; data rates may apply. Reply STOP to unsubscribe, HELP for help.
+                Consent is not a condition of purchase.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-card">
-        <div class="footer-title">Lead Recovery Systems</div>
-        <div class="footer-line">Lead Recovery Systems (DBA) — Joshua Waring (Sole Proprietor)</div>
-        <div class="footer-line">3782 Glebe Meadow Way, Edgewater, MD 21037, US</div>
-        <div class="footer-line">SMS Support: <a href="tel:+18554552242">+1 (855) 455-2242</a></div>
-        <div class="footer-line">Contact: <a href="mailto:josh@leadrecoverysystems.com">josh@leadrecoverysystems.com</a></div>
-
+    <footer>
+      <div class="inner">
+        <div style="font-weight:800; color:#fff;">Lead Recovery Systems</div>
+        <div>Lead Recovery Systems (DBA) — Joshua Waring (Sole Proprietor)</div>
+        <div>3782 Glebe Meadow Way, Edgewater, MD 21037, US</div>
+        <div>SMS Support: <a href="tel:+18554552242">+1 (855) 455-2242</a></div>
+        <div>Contact: <a href="mailto:josh@leadrecoverysystems.com">josh@leadrecoverysystems.com</a></div>
         <div class="footer-links">
           <a href="/privacy-policy.html">Privacy Policy</a>
           <a href="/terms-and-conditions.html">Terms &amp; Conditions</a>
         </div>
       </div>
-    </div>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>
